@@ -111,44 +111,6 @@ O comando acima retorna:
 </details>
 
 <details>
-<summary>ELEARNING_PHP (PROJETO) :eye: </summary> 
- 
-#### CRIANDO O PROJETO `elearning_php ` NA RAÍZ DO SERVIDOR
-      root@cloud18344:~# sudo mkdir /var/www/elearning_php
-#### DANDO PERMISSÃO AO USUÁRIO CORRENTE SOBRE O DIRETÓRIO      
-      root@cloud18344:~# sudo chown -R $USER:$USER /var/www/elearning_php
-#### CRIANDO E EDITANDO COM O NANO O ARQUIVO ` elearning_php.conf ` 
-      root@cloud18344:~# sudo nano /etc/apache2/sites-available/elearning_php.conf
-#### CONFIGURAÇÃO DO HOST NO ARQUIVO ` elearning_php.conf `
-     <VirtualHost 88.198.104.148:80>
-         ServerName elearning_php
-         ServerAlias www.elearning_php
-         ServerAdmin webmaster@localhost
-         DocumentRoot /var/www/elearning_php
-         ErrorLog ${APACHE_LOG_DIR}/error.log
-         CustomLog ${APACHE_LOG_DIR}/access.log combined
-     </VirtualHost>
-#### ATIVANDO O HOST (ENABLE SITE - ensite)
-      a2ensite elearning_php
-#### DESATIVANDO O HOST DEFAULT (DISABLE SITE - dissite)
-      a2dissite 000-default
-#### RELOAD NO APACHE      
-      systemctl reload apache2
-#### CRIANDO EDITANDO O ARQUIVO DE BOAS VINDAS DO APACHE PARA O HOST CRIADO
-      sudo nano /var/www/elearning_php/index.html
-#### ENTRANDO NO DIRETÓRIO DO PROJETO RECÉM CRIADO
-      cd elearning_php
-#### CRIANDO E EDITANDO O ARQUIVO DE TESTE DO PROJETO ` index.php `      
-      nano index.php
-#### EDITANDO O ARQUIVO ` dir.conf` QUE ESTABELECE A PRECEDÊNCIA DOS ARQUIVOS NO SERVIDOR
-      sudo nano /etc/apache2/mods-enabled/dir.conf
-#### CONFIGURAÇÃO DO ARQUIVO ` dir.conf ` INDICANDO QUE ARQUIVOS COM EXTENSÃO ` *.php ` TÊEM PRECEDÊNCIA
-     <IfModule mod_dir.c>
-             DirectoryIndex index.php index.cgi index.pl index.html index.xhtml index.htm
-     </IfModule>     
-</details>
-
-<details>
 <summary>ufw :eye: </summary> 
  
      sudo ufw app list
@@ -345,5 +307,43 @@ Vamos conferir o que o Cargo gerou para nós:
     
     2 directories, 2 files
     dev@dev:~/hello_world$
+</details>
+
+<details>
+<summary>ELEARNING_PHP (PROJETO) :eye: </summary> 
+ 
+#### CRIANDO O PROJETO `elearning_php ` NA RAÍZ DO SERVIDOR
+      root@cloud18344:~# sudo mkdir /var/www/elearning_php
+#### DANDO PERMISSÃO AO USUÁRIO CORRENTE SOBRE O DIRETÓRIO      
+      root@cloud18344:~# sudo chown -R $USER:$USER /var/www/elearning_php
+#### CRIANDO E EDITANDO COM O NANO O ARQUIVO ` elearning_php.conf ` 
+      root@cloud18344:~# sudo nano /etc/apache2/sites-available/elearning_php.conf
+#### CONFIGURAÇÃO DO HOST NO ARQUIVO ` elearning_php.conf `
+     <VirtualHost 88.198.104.148:80>
+         ServerName elearning_php
+         ServerAlias www.elearning_php
+         ServerAdmin webmaster@localhost
+         DocumentRoot /var/www/elearning_php
+         ErrorLog ${APACHE_LOG_DIR}/error.log
+         CustomLog ${APACHE_LOG_DIR}/access.log combined
+     </VirtualHost>
+#### ATIVANDO O HOST (ENABLE SITE - ensite)
+      a2ensite elearning_php
+#### DESATIVANDO O HOST DEFAULT (DISABLE SITE - dissite)
+      a2dissite 000-default
+#### RELOAD NO APACHE      
+      systemctl reload apache2
+#### CRIANDO EDITANDO O ARQUIVO DE BOAS VINDAS DO APACHE PARA O HOST CRIADO
+      sudo nano /var/www/elearning_php/index.html
+#### ENTRANDO NO DIRETÓRIO DO PROJETO RECÉM CRIADO
+      cd elearning_php
+#### CRIANDO E EDITANDO O ARQUIVO DE TESTE DO PROJETO ` index.php `      
+      nano index.php
+#### EDITANDO O ARQUIVO ` dir.conf` QUE ESTABELECE A PRECEDÊNCIA DOS ARQUIVOS NO SERVIDOR
+      sudo nano /etc/apache2/mods-enabled/dir.conf
+#### CONFIGURAÇÃO DO ARQUIVO ` dir.conf ` INDICANDO QUE ARQUIVOS COM EXTENSÃO ` *.php ` TÊEM PRECEDÊNCIA
+     <IfModule mod_dir.c>
+             DirectoryIndex index.php index.cgi index.pl index.html index.xhtml index.htm
+     </IfModule>     
 </details>
 
