@@ -313,11 +313,11 @@ Vamos conferir o que o Cargo gerou para nós:
 <summary>ELEARNING_PHP (PROJETO) :eye: </summary> 
  
 #### CRIANDO O PROJETO `elearning_php ` NA RAÍZ DO SERVIDOR
-      root@cloud18344:~# sudo mkdir /var/www/elearning_php
+     sudo mkdir /var/www/elearning_php
 #### DANDO PERMISSÃO AO USUÁRIO CORRENTE SOBRE O DIRETÓRIO      
-      root@cloud18344:~# sudo chown -R $USER:$USER /var/www/elearning_php
+     sudo chown -R $USER:$USER /var/www/elearning_php
 #### CRIANDO E EDITANDO COM O NANO O ARQUIVO ` elearning_php.conf ` 
-      root@cloud18344:~# sudo nano /etc/apache2/sites-available/elearning_php.conf
+     sudo nano /etc/apache2/sites-available/elearning_php.conf
 #### CONFIGURAÇÃO DO HOST NO ARQUIVO ` elearning_php.conf `
      <VirtualHost 88.198.104.148:80>
          ServerName elearning_php
@@ -338,7 +338,7 @@ Vamos conferir o que o Cargo gerou para nós:
 #### ENTRANDO NO DIRETÓRIO DO PROJETO RECÉM CRIADO
       cd elearning_php
 #### CRIANDO E EDITANDO O ARQUIVO DE TESTE DO PROJETO ` index.php `      
-      nano index.php
+      sudo nano index.php
 #### EDITANDO O ARQUIVO ` dir.conf` QUE ESTABELECE A PRECEDÊNCIA DOS ARQUIVOS NO SERVIDOR
       sudo nano /etc/apache2/mods-enabled/dir.conf
 #### CONFIGURAÇÃO DO ARQUIVO ` dir.conf ` INDICANDO QUE ARQUIVOS COM EXTENSÃO ` *.php ` TÊEM PRECEDÊNCIA
