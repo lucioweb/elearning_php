@@ -25,9 +25,9 @@
 <details>
 <summary>PHP :eye: </summary> 
 
-#### Versão do PHP instalada ⭐⭐⭐⭐⭐⭐
+#### - Versão do PHP instalada ⭐⭐⭐⭐⭐⭐
      php -v //Versão do PHP instalada
-#### Módulos do PHP instalados     
+#### - Módulos do PHP instalados     
      php -m //Lista os módulos instalados
 O comando acima retorna:
      
@@ -41,7 +41,7 @@ O comando acima retorna:
      ...
      tokenizer
      
-##### LOCALIZA ARQUIVOS php.ini
+##### - LOCALIZA ARQUIVOS php.ini
     find / -name php.ini //Localiza arquivos php.ini
 
 O Comando acima retorna:
@@ -53,26 +53,25 @@ O Comando acima retorna:
 <details>
 <summary>MYSQL :eye: </summary> 
 
-#### Versão do MySql instalada     
+#### - Versão do MySql instalada     
      mysql -V
 O comando acima retorna:
      
      mysql  Ver 8.0.36-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
-#### Versão do Maria DB instalada
+#### - Versão do Maria DB instalada
     mariadb -V
 O comando acima retorna:
 
     mariadb  Ver 15.1 Distrib 10.11.6-MariaDB, for debian-linux-gnu (x86_64) using  EditLine wrapper
-# MYSQL
-#### INSTALANDO O MYSQL-SERVER
+#### - INSTALANDO O MYSQL-SERVER
     sudo apt install mysql-server    
-#### EXECUTANDO O SCRIPT DE SEGURANÇA            
+#### - EXECUTANDO O SCRIPT DE SEGURANÇA            
     sudo mysql_secure_installation
-#### STATUS DO SERVIÇO DO MySQL Community Server
+#### - STATUS DO SERVIÇO DO MySQL Community Server
     service mysql status
-#### ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL - USUÁRIO ` root `
+#### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL - USUÁRIO ` root `
     mysql
-#### EXIBINDO AS BASES DE DADOS NO SERVIDOR
+#### - EXIBINDO AS BASES DE DADOS NO SERVIDOR
     mysql> show databases;
 O comando acima retorna:
 
@@ -96,27 +95,31 @@ O comando acima retorna:
 <summary>Apache2 :eye: </summary> 
 
 ### APACHE NO UBUNTU
-#### INSTALL APACHE2
+#### - INSTALL APACHE2
     sudo apt install apache2
-#### VERIFICANDO A VERSÃO
+#### - VERIFICANDO A VERSÃO
     apache2 -v
-####  STATUS DO SERVIÇO NO UBUNTU (Debian usa ` service ´)
+####  - STATUS DO SERVIÇO NO UBUNTU (Debian usa ` service ´)
     sudo systemctl status apache2 
-####  START DO SERVIÇO NO UBUNTU (Debian usa ` service ´)
+####  - START DO SERVIÇO NO UBUNTU (Debian usa ` service ´)
     sudo systemctl start apache2    
-### APACHE NO DEBIAN
-#### STATUS DO SERVIÇO
+### - APACHE NO DEBIAN
+#### - STATUS DO SERVIÇO
     service apache2 status
-#### START NO SERVIÇO
+#### - START NO SERVIÇO
     service apache2 start
-# ELEARNING_PHP (PROJETO)
-##### CRIANDO O PROJETO `elearning_php ` NA RAÍZ DO SERVIDOR
+</details>
+
+<details>
+<summary>ELEARNING_PHP (PROJETO) :eye: </summary> 
+ 
+#### CRIANDO O PROJETO `elearning_php ` NA RAÍZ DO SERVIDOR
       root@cloud18344:~# sudo mkdir /var/www/elearning_php
-##### DANDO PERMISSÃO AO USUÁRIO CORRENTE SOBRE O DIRETÓRIO      
+#### DANDO PERMISSÃO AO USUÁRIO CORRENTE SOBRE O DIRETÓRIO      
       root@cloud18344:~# sudo chown -R $USER:$USER /var/www/elearning_php
-##### CRIANDO E EDITANDO COM O NANO O ARQUIVO ` elearning_php.conf ` 
+#### CRIANDO E EDITANDO COM O NANO O ARQUIVO ` elearning_php.conf ` 
       root@cloud18344:~# sudo nano /etc/apache2/sites-available/elearning_php.conf
-##### CONFIGURAÇÃO DO HOST NO ARQUIVO ` elearning_php.conf `
+#### CONFIGURAÇÃO DO HOST NO ARQUIVO ` elearning_php.conf `
      <VirtualHost 88.198.104.148:80>
          ServerName elearning_php
          ServerAlias www.elearning_php
@@ -142,7 +145,7 @@ O comando acima retorna:
 #### CONFIGURAÇÃO DO ARQUIVO ` dir.conf ` INDICANDO QUE ARQUIVOS COM EXTENSÃO ` *.php ` TÊEM PRECEDÊNCIA
      <IfModule mod_dir.c>
              DirectoryIndex index.php index.cgi index.pl index.html index.xhtml index.htm
-     </IfModule>
+     </IfModule>     
 </details>
 
 <details>
