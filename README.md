@@ -53,12 +53,12 @@ O Comando acima retorna:
 <details>
 <summary>MYSQL :eye: </summary> 
 
-#### - Versão do MySql instalada     
+#### - VERSÃO INSTALADA DO MYSQL     
      mysql -V
 O comando acima retorna:
      
      mysql  Ver 8.0.36-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
-#### - Versão do Maria DB instalada
+#### - VERSÃO INSTALADA DO MARIA DB
     mariadb -V
 O comando acima retorna:
 
@@ -67,10 +67,38 @@ O comando acima retorna:
     sudo apt install mysql-server    
 #### - EXECUTANDO O SCRIPT DE SEGURANÇA            
     sudo mysql_secure_installation
-#### - STATUS DO SERVIÇO DO MySQL Community Server
+#### - STATUS, START, RELOAD, STOP DO SERVIÇO DO MySQL
     service mysql status
-#### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL - USUÁRIO ` root `
-    mysql
+    service mysql start
+    service mysql stop
+    service mysql reload
+   
+O servidor MySQL é iniciado automaticamente após a instalação. Você pode verificar o status do servidor MySQL com o seguinte comando `systemctl status mysql`.
+Se o sistema operacional estiver habilitado para systemd, comandos systemctl padrão (ou alternativamente, service com os argumentos invertidos) como stop , start , status e restart devem ser usados ​​para gerenciar o serviço do servidor MySQL. 
+    
+    systemctl status mysql //Funcionou
+#### - ACESSANDO O SERVIDOR DE BANCO DE DADOS MYSQL COMO USUÁRIO ROOT
+    root@cloud18344:~# mysql
+Ou:
+
+    root@cloud18344:~# mysql -u root -p
+O comando acima retorna:
+
+    Enter password: 
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 297
+    Server version: 8.0.36-0ubuntu0.22.04.1 (Ubuntu)
+        
+    Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+        
+    Oracle is a registered trademark of Oracle Corporation and/or its
+    affiliates. Other names may be trademarks of their respective
+    owners.
+        
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+        
+    mysql> 
+>Repare que o mysql não exigiu autenticação. É possível logar no servidor sem ter que digitar a senha.
 #### - EXIBINDO AS BASES DE DADOS NO SERVIDOR
     mysql> show databases;
 O comando acima retorna:
@@ -89,6 +117,112 @@ O comando acima retorna:
     | sys                |
     +--------------------+
     9 rows in set (0.01 sec)
+#### - CRIANDO A BASE DE DADOS `db_crud`
+    CREATE DATABASE db_crud CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+#### - CRIANDO NA BASE DE DADOS `db_crud`, A TABELA `tbl_users`.
+    create table tbl_users
+    (
+        id int auto_increment primary key,
+        first_name varchar(50) not null ,
+        last_name  varchar(50) not null,
+        email      varchar(50) not null,
+        message    varchar(20) not null,
+        ts timestamp null
+    )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+#### - ALTERANDO A COLLATE DO CAMPO `first_mame` DA TABELA `tbl_users`.     
+    ALTER TABLE tbl_users MODIFY first_name varchar(50) COLLATE utf8mb4_0900_ai_ci;
+#### - EXIBINDO OS CHARSET `SHOW CHARACTER SET`    
+    mysql> SHOW CHARACTER SET;
+    +----------+---------------------------------+---------------------+--------+
+    | Charset  | Description                     | Default collation   | Maxlen |
+    +----------+---------------------------------+---------------------+--------+
+    | armscii8 | ARMSCII-8 Armenian              | armscii8_general_ci |      1 |
+    | ascii    | US ASCII                        | ascii_general_ci    |      1 |
+    | big5     | Big5 Traditional Chinese        | big5_chinese_ci     |      2 |
+    | binary   | Binary pseudo charset           | binary              |      1 |
+    | cp1250   | Windows Central European        | cp1250_general_ci   |      1 |
+    | cp1251   | Windows Cyrillic                | cp1251_general_ci   |      1 |
+    | cp1256   | Windows Arabic                  | cp1256_general_ci   |      1 |
+    | cp1257   | Windows Baltic                  | cp1257_general_ci   |      1 |
+    | cp850    | DOS West European               | cp850_general_ci    |      1 |
+    | cp852    | DOS Central European            | cp852_general_ci    |      1 |
+    | cp866    | DOS Russian                     | cp866_general_ci    |      1 |
+    | cp932    | SJIS for Windows Japanese       | cp932_japanese_ci   |      2 |
+    | dec8     | DEC West European               | dec8_swedish_ci     |      1 |
+    | eucjpms  | UJIS for Windows Japanese       | eucjpms_japanese_ci |      3 |
+    | euckr    | EUC-KR Korean                   | euckr_korean_ci     |      2 |
+    | gb18030  | China National Standard GB18030 | gb18030_chinese_ci  |      4 |
+    | gb2312   | GB2312 Simplified Chinese       | gb2312_chinese_ci   |      2 |
+    | gbk      | GBK Simplified Chinese          | gbk_chinese_ci      |      2 |
+    | geostd8  | GEOSTD8 Georgian                | geostd8_general_ci  |      1 |
+    | greek    | ISO 8859-7 Greek                | greek_general_ci    |      1 |
+    | hebrew   | ISO 8859-8 Hebrew               | hebrew_general_ci   |      1 |
+    | hp8      | HP West European                | hp8_english_ci      |      1 |
+    | keybcs2  | DOS Kamenicky Czech-Slovak      | keybcs2_general_ci  |      1 |
+    | koi8r    | KOI8-R Relcom Russian           | koi8r_general_ci    |      1 |
+    | koi8u    | KOI8-U Ukrainian                | koi8u_general_ci    |      1 |
+    | latin1   | cp1252 West European            | latin1_swedish_ci   |      1 |
+    | latin2   | ISO 8859-2 Central European     | latin2_general_ci   |      1 |
+    | latin5   | ISO 8859-9 Turkish              | latin5_turkish_ci   |      1 |
+    | latin7   | ISO 8859-13 Baltic              | latin7_general_ci   |      1 |
+    | macce    | Mac Central European            | macce_general_ci    |      1 |
+    | macroman | Mac West European               | macroman_general_ci |      1 |
+    | sjis     | Shift-JIS Japanese              | sjis_japanese_ci    |      2 |
+    | swe7     | 7bit Swedish                    | swe7_swedish_ci     |      1 |
+    | tis620   | TIS620 Thai                     | tis620_thai_ci      |      1 |
+    | ucs2     | UCS-2 Unicode                   | ucs2_general_ci     |      2 |
+    | ujis     | EUC-JP Japanese                 | ujis_japanese_ci    |      3 |
+    | utf16    | UTF-16 Unicode                  | utf16_general_ci    |      4 |
+    | utf16le  | UTF-16LE Unicode                | utf16le_general_ci  |      4 |
+    | utf32    | UTF-32 Unicode                  | utf32_general_ci    |      4 |
+    | utf8mb3  | UTF-8 Unicode                   | utf8mb3_general_ci  |      3 |
+    | utf8mb4  | UTF-8 Unicode                   | utf8mb4_0900_ai_ci  |      4 |
+    +----------+---------------------------------+---------------------+--------+
+    41 rows in set (0.01 sec)
+> Repare que para o charset `utf8mb4` a collation é `utf8mb4_0900_ai_ci`.
+#### - EXIBINDO OS CHARSET QUE CONTENHAM `utf...`    
+    SHOW CHARACTER SET LIKE 'utf%';
+    +---------+------------------+--------------------+--------+
+    | Charset | Description      | Default collation  | Maxlen |
+    +---------+------------------+--------------------+--------+
+    | utf16   | UTF-16 Unicode   | utf16_general_ci   |      4 |
+    | utf16le | UTF-16LE Unicode | utf16le_general_ci |      4 |
+    | utf32   | UTF-32 Unicode   | utf32_general_ci   |      4 |
+    | utf8mb3 | UTF-8 Unicode    | utf8mb3_general_ci |      3 |
+    | utf8mb4 | UTF-8 Unicode    | utf8mb4_0900_ai_ci |      4 |
+    +---------+------------------+--------------------+--------+
+    5 rows in set (0.01 sec)
+
+>Alterando o método de autenticação do root. O comando `ALTER USER` altera o método de autenticação do usuário root para um que use uma senha. O exemplo a seguir altera o método de autenticação para `mysql_native_password`:
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Diferent@1968#';
+>Alterando o método de autenticação do root. O comando `ALTER USER` altera o método de autenticação do usuário root para um que use uma senha. O exemplo a seguir altera o método de autenticação para `caching_sha2_password`:
+
+    ALTER USER 'root'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'Diferent@1968#';
+>Agora:
+>
+    root@cloud18344:~# mysql -u root -p
+    Enter password: Diferent@****# 
+> 
+>Verificando quais métodos de autenticação cada usuário utiliza
+   
+    SELECT user,authentication_string,plugin,host FROM mysql.user;
+>Retorna:
+    
+    mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+    +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+    | user             | authentication_string                                                  | plugin                | host      |
+    +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+    | user1            | *668425423DB5193AF921380129F465A6425216D0                              | mysql_native_password | %         |
+    | debian-sys-maint | $A$005N]s;"azZNI
+    T       OaijZQpZxQlq2DwIy3GfWsMGGFn/wV2YlH//rNbQExVNT9 | caching_sha2_password | localhost |
+    | mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+    | mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+    | mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+    | root             | *0B65A16710B01533DBAA7AA5CC7AB93313B0ACD4                              | mysql_native_password | localhost |
+    +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+    6 rows in set (0.00 sec)
+
 </details>
 
 <details>
@@ -347,3 +481,9 @@ Vamos conferir o que o Cargo gerou para nós:
      </IfModule>     
 </details>
 
+#### - CRIANDO A TABLE TODO-LIST
+    CREATE TABLE db_example_database.tbl_todo_list (
+      item_id INT AUTO_INCREMENT,
+      content VARCHAR(255),
+      PRIMARY KEY(item_id)
+    );
