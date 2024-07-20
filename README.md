@@ -10,6 +10,18 @@
 <img src="http://img.shields.io/badge/-PHPStorm-181717?style=for-the-badge&logo=phpstorm&logoColor=white" alt=""/>	
 </div>
 
+<div>
+<img src="https://img.shields.io/badge/Ubuntu-A34F26?style=for-the-badge&logo=ubuntu&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/Debian-B34F26?style=for-the-badge&logo=debian&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/PHP-C34F26?style=for-the-badge&logo=php&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/Markdown-E34F26?style=for-the-badge&logo=markdown&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/CSS3-E34F26?style=for-the-badge&logo=css3&logoColor=white" alt=""/>	
+<img src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white" alt=""/>
+<img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt=""/>
+<img src="http://img.shields.io/badge/-PHPStorm-181717?style=for-the-badge&logo=phpstorm&logoColor=white" alt=""/>	
+</div>
+
 <details>
 <summary>CONFIGURAÇÕES DO SERVIDOR 👋 :eye: </summary> 
 
@@ -48,6 +60,50 @@ O Comando acima retorna:
 
     /etc/php/8.1/cli/php.ini
     /etc/php/8.1/apache2/php.ini
+    
+    Last login: Sun Jun  9 14:33:19 2024 from 177.89.246.188
+    luciolemos@cloud18344:~$ php -v
+    PHP 8.1.2-1ubuntu2.17 (cli) (built: May  1 2024 10:10:07) (NTS)
+    Copyright (c) The PHP Group
+    Zend Engine v4.1.2, Copyright (c) Zend Technologies
+        with Zend OPcache v8.1.2-1ubuntu2.17, Copyright (c), by Zend Technologies
+        with Xdebug v3.1.2, Copyright (c) 2002-2021, by Derick Rethans
+#### - Instala PHP 8.3 + outras configurações        
+    luciolemos@cloud18344:~$ sudo add-apt-repository ppa:ondrej/php
+    [sudo] password for luciolemos: 
+    
+    luciolemos@cloud18344:~$ sudo apt update
+    
+    luciolemos@cloud18344:~$ sudo apt install php8.3
+    
+    luciolemos@cloud18344:~$ php -v
+    PHP 8.1.2-1ubuntu2.17 (cli) (built: May  1 2024 10:10:07) (NTS)
+    Copyright (c) The PHP Group
+    Zend Engine v4.1.2, Copyright (c) Zend Technologies
+        with Zend OPcache v8.1.2-1ubuntu2.17, Copyright (c), by Zend Technologies
+        with Xdebug v3.1.2, Copyright (c) 2002-2021, by Derick Rethans
+    
+    luciolemos@cloud18344:~$ sudo update-alternatives --list  php
+    /usr/bin/php.default
+    /usr/bin/php8.1
+    /usr/bin/php8.3
+    
+    luciolemos@cloud18344:~$ sudo update-alternatives --set php /usr/bin/php8.3
+    update-alternatives: using /usr/bin/php8.3 to provide /usr/bin/php (php) in manual mode
+    
+    luciolemos@cloud18344:~$ php -v
+    PHP 8.3.8 (cli) (built: Jun  8 2024 21:34:22) (NTS)
+    Copyright (c) The PHP Group
+    Zend Engine v4.3.8, Copyright (c) Zend Technologies
+        with Zend OPcache v8.3.8, Copyright (c), by Zend Technologies
+    
+    luciolemos@cloud18344:~$ systemctl restart apache2.service
+    ==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===
+    Authentication is required to restart 'apache2.service'.
+    Authenticating as: Lúcio Flávio Lemos,,, (luciolemos)
+    Password: 
+    ==== AUTHENTICATION COMPLETE ===
+    luciolemos@cloud18344:~$ 
 </details>
 
 <details>
